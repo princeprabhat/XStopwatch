@@ -12,18 +12,17 @@ const StopWatch = () => {
     if (!isActive) return;
 
     let time = setInterval(() => {
-      setValue((prev) => ({ ...prev, sec2: Number(value.sec2) + 1 }));
+      setValue({ ...value, sec2: Number(value.sec2) + 1 });
     }, 1000);
     if (value.sec2 == 10) {
-      setValue((prev) => ({ ...prev, sec1: Number(value.sec1) + 1, sec2: 0 }));
+      setValue({ ...value, sec1: Number(value.sec1) + 1, sec2: 0 });
     }
     if (value.sec1 == 6) {
-      setValue((prev) => ({
-        ...prev,
+      setValue({
         minute: Number(value.minute) + 1,
         sec1: 0,
         sec2: 0,
-      }));
+      });
     }
 
     return () => clearInterval(time);
